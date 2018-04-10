@@ -9,6 +9,10 @@ export type DefaultConfig = PowerPartial<EggAppConfig & BizConfig>
 export interface BizConfig {
   sourceUrl: string
   middleware: string[]
+  wechat: {
+    appid: string
+    secret: string
+  }
 }
 
 export default (appInfo: EggAppConfig) => {
@@ -17,9 +21,19 @@ export default (appInfo: EggAppConfig) => {
   // app special config
   config.sourceUrl = `https://github.com/eggjs/examples/tree/master/${appInfo.name}`
 
+  config.wechat = {
+    appid: 'wx04a308ed79815bb9',
+    secret: '2e71b19f75f646c735be3dcfeef7949b'
+  }
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_floveluy'
+
+  config.security = {
+    csrf: {
+      enable: false
+    }
+  }
 
   config.sequelize = {
     dialect: 'mysql', // db type
