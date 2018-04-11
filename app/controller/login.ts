@@ -1,46 +1,28 @@
 import { bp } from 'egg-blueprint'
 import Base from './controllerbase'
-
-
-
-interface WechatInfo {
-  data: {
-    session_key: string
-    expires_in: 7200
-    openid: string
-  }
-}
+import * as crypto from 'crypto'
+import { WechatAuth } from '../prerequisite/wechat-auth'
 
 export default class Login extends Base {
   @bp.post('/login')
   public async index() {
-    const { ctx } = this
-    const { code, userInfo } = ctx.request.body
-    const url = `https://api.weixin.qq.com/sns/jscode2session?appid=${this.app.config.wechat.appid}&secret=${
-      this.app.config.wechat.secret
-    }&js_code=${code}&grant_type=authorization_code`
+    const res = await this.service.wechat.getWechatInfo()
 
-    const res: WechatInfo = await ctx.curl(url, { dataType: 'json' })
-
-    this.app.jwt.verify('token',this.app.config.secret);
-
-    console.log(res.data, userInfo)
-  
+    const sha1 = crypto.createHash('sha1')
+    const userToken = sha1.update(res.openid).digest('hex')
+    const jwtToken = this.app.jwt.sign({ token: userToken }, this.app.config.secret, { expiresIn: 60 * 60 * 48 })
     this.ResponseJson({
       state: 'ok',
-      ticket: res.data.openid
+      ticket: jwtToken
     })
   }
 
-  @bp.post('/login/check')
-  public async check(){
-    // const { ctx } = this
-    // const { code, userInfo } = ctx.request.body
+  @bp.post('/login/check', WechatAuth)
+  public async check() {
     // todo检查jwt是否到期
     this.ResponseJson({
-      state: 'bad',
+      state: 'ok',
       ticket: 'asd'
     })
   }
-
 }
