@@ -1,6 +1,8 @@
 import { bp } from 'egg-blueprint'
 import Base from './controllerbase'
 
+
+
 interface WechatInfo {
   data: {
     session_key: string
@@ -20,8 +22,9 @@ export default class Login extends Base {
 
     const res: WechatInfo = await ctx.curl(url, { dataType: 'json' })
 
-    console.log(res.data, userInfo)
+    this.app.jwt.verify('token',this.app.config.secret);
 
+    console.log(res.data, userInfo)
   
     this.ResponseJson({
       state: 'ok',

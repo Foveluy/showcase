@@ -25,6 +25,9 @@ export default (appInfo: EggAppConfig) => {
     appid: 'wx04a308ed79815bb9',
     secret: '2e71b19f75f646c735be3dcfeef7949b'
   }
+
+  config.secret = '123456'
+
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_floveluy'
