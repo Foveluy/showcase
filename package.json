@@ -7,7 +7,7 @@
     "typescript": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-ts-zongheng",
+    "start": "egg-scripts start --title=egg-server-ts-zongheng",
     "stop": "egg-scripts stop --title=egg-server-ts-zongheng",
     "dev": "egg-bin dev -r egg-ts-helper/register",
     "debug": "egg-bin debug -r egg-ts-helper/register",
@@ -18,7 +18,8 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "lint": "tslint .",
-    "clean": "ets clean"
+    "clean": "ets clean",
+    "docker": "docker container run --rm -p 7001:7001 -it zongheng-egg:0.0.1"
   },
   "dependencies": {
     "@types/jsonwebtoken": "^7.2.6",
@@ -35,14 +36,14 @@
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
-    "@types/node": "^7.0.12",
+    "@types/node": "^7.0.60",
     "@types/supertest": "^2.0.0",
     "autod": "^3.0.1",
     "autod-egg": "^1.1.0",
-    "egg-ci": "^1.8.0",
     "egg-bin": "^4.6.2",
+    "egg-ci": "^1.8.0",
     "egg-mock": "^3.16.0",
-    "egg-ts-helper": "^1.4.2",
+    "egg-ts-helper": "^1.6.0",
     "tslib": "^1.9.0",
     "tslint": "^4.0.0",
     "typescript": "^2.8.1"

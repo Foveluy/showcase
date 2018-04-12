@@ -19,6 +19,9 @@ declare module 'egg' {
   interface Context {
     model: Sequelize & {
       User: Model<{}, {}>
+      Course: Model<{}, {}>
+      Trainer: Model<{}, {}>
+      PersonCourse: Model<{}, {}>
     }
   }
 

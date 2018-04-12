@@ -10,7 +10,7 @@ module.exports = (app: Application) => {
       type: STRING(32),
       allowNull: false
     },
-    member: STRING(32),
+    member: INTEGER,
     maxMember: INTEGER,
     trainer: INTEGER,
     time: STRING(32),
