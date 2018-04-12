@@ -7,7 +7,7 @@
     "typescript": true
   },
   "scripts": {
-    "start": "egg-scripts start --title=egg-server-ts-zongheng",
+    "start": "npm run tsc && egg-scripts start --title=egg-server-ts-zongheng",
     "stop": "egg-scripts stop --title=egg-server-ts-zongheng",
     "dev": "egg-bin dev -r egg-ts-helper/register",
     "debug": "egg-bin debug -r egg-ts-helper/register",
@@ -25,7 +25,7 @@
     "@types/jsonwebtoken": "^7.2.6",
     "@types/sequelize": "^4.27.14",
     "egg": "^2.6.0",
-    "egg-blueprint": "^1.2.0",
+    "egg-blueprint": "^1.2.1",
     "egg-jwt": "^3.0.0",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^3.1.2",
@@ -58,9 +58,7 @@
     "type": "git",
     "url": ""
   },
-  "eslintIgnore": [
-    "coverage"
-  ],
+  "eslintIgnore": ["coverage"],
   "author": "zhengfang",
   "license": "MIT"
 }

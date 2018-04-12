@@ -12,17 +12,18 @@ module.exports = (app: Application) => {
       allowNull: false
     },
     ticket: STRING(128),
-    name: TEXT,
+    nickName: TEXT,
     gender: INTEGER,
     city: STRING(16),
     avatarUrl: STRING(256),
     credit: INTEGER,
     admin: STRING(8),
     trainer: STRING(8),
-    body: STRING(64), //todo:json
+    body: Sequelize.JSON, //todo:json
     phone: STRING(16),
     unitPrice: INTEGER,
-    birthdate: BIGINT
+    birthdate: BIGINT,
+    realName: STRING(8)
   })
 
   return user

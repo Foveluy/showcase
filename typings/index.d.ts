@@ -1,4 +1,4 @@
-import sequelize, { Options, Sequelize, Model } from 'sequelize'
+import sequelize, { Options, Sequelize, SequelizeStatic, Model } from 'sequelize'
 import { VerifyOptions, SignOptions, DecodeOptions } from 'jsonwebtoken'
 
 interface JWT {
@@ -10,7 +10,7 @@ interface JWT {
 declare module 'egg' {
   // extend app
   interface Application {
-    Sequelize: sequelize
+    Sequelize: SequelizeStatic//这里有问题
     model: Sequelize
     jwt: JWT
   }
