@@ -26,7 +26,9 @@ export default class Login extends Base {
     if (openid) {
       this.logger.info('老客人登录', res.userInfo.nickName)
       await model.User.update(
-        { nickName: res.userInfo.nickName, ticket: ticket, avatarUrl: res.userInfo.avatarUrl },
+        { nickName: res.userInfo.nickName, 
+          ticket: ticket, 
+          avatarUrl: res.userInfo.avatarUrl },
         { where: { openid: openid }, transaction }
       )
     } else {
