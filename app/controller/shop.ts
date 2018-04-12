@@ -4,7 +4,7 @@ import { WechatAuth } from '../prerequisite/wechat-auth'
 import Base from '../base/controllerbase'
 
 export default class Shop extends Base {
-  @bp.post('/Shop', WechatAuth)
+  @bp.post('/shop', WechatAuth)
   public async getCourse() {
     const { ctx } = this
     const course = await ctx.model.Course.findAll({

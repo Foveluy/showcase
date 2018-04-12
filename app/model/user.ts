@@ -15,7 +15,7 @@ module.exports = (app: Application) => {
     nickName: TEXT,
     gender: INTEGER,
     city: STRING(16),
-    avatarUrl: STRING(256),
+    avatarUrl: TEXT,
     credit: INTEGER,
     admin: STRING(8),
     trainer: STRING(8),

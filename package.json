@@ -24,8 +24,10 @@
   "dependencies": {
     "@types/jsonwebtoken": "^7.2.6",
     "@types/sequelize": "^4.27.14",
+    "cors": "^2.8.4",
     "egg": "^2.6.0",
     "egg-blueprint": "^1.2.1",
+    "egg-cors": "^2.0.0",
     "egg-jwt": "^3.0.0",
     "egg-scripts": "^2.6.0",
     "egg-sequelize": "^3.1.2",
@@ -58,7 +60,9 @@
     "type": "git",
     "url": ""
   },
-  "eslintIgnore": ["coverage"],
+  "eslintIgnore": [
+    "coverage"
+  ],
   "author": "zhengfang",
   "license": "MIT"
 }
