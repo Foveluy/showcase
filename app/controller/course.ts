@@ -1,7 +1,6 @@
-import { bp } from 'egg-blueprint'
-
 import { WechatAuth } from '../prerequisite/wechat-auth'
 import Base from '../base/controllerbase';
+import { bp } from 'egg-blueprint'
 
 export default class Course extends Base {
   @bp.post('/course', WechatAuth)
