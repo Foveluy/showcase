@@ -12,7 +12,7 @@ module.exports = (app: Application) => {
     },
     member: INTEGER,
     maxMember: INTEGER,
-    trainer: INTEGER,
+    trainerId: INTEGER,
     time: STRING(32),
     date: STRING(16),
     courseModel: STRING(64),
@@ -21,6 +21,25 @@ module.exports = (app: Application) => {
       type: STRING(8),
       defaultValue: 'no'
     }
+  })
+
+  app.beforeStart(async () => {
+    model.create({
+      course: '力量训练123xyz',
+      member: 0,
+      maxMember: 3,
+      trainerId: 1,
+      time: '15:00~18:00',
+      date: '4.13'
+    })
+    model.create({
+      course: '力量训练123xyz',
+      member: 0,
+      maxMember: 3,
+      trainerId: 2,
+      time: '15:00~18:00',
+      date: '4.13'
+    })
   })
 
   return model

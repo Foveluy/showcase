@@ -20,6 +20,7 @@ export const ModelDefine = (app: Application, name: string, attributes: DefineAt
     }
   )
   // Model.sync({ force: true })
+
   return Model
 }
 
