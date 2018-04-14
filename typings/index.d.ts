@@ -30,11 +30,12 @@ declare module 'egg' {
     interface EggAppConfig {
         sequelize: Options
         secret: string
-        cors:any
+        cors: any
     }
 }
 
 interface CourseDetail {
-    openid: string
-    courseID: string
+    openid?: string
+    courseID?: string
+    fuck?: string
 }

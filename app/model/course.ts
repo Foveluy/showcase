@@ -30,7 +30,7 @@ module.exports = (app: Application) => {
       maxMember: 3,
       trainerId: 1,
       time: '15:00~18:00',
-      date: '4.13'
+      date: '4.14'
     })
     model.create({
       course: '力量训练123xyz',
@@ -38,7 +38,7 @@ module.exports = (app: Application) => {
       maxMember: 3,
       trainerId: 2,
       time: '15:00~18:00',
-      date: '4.13'
+      date: '4.14'
     })
   })
 

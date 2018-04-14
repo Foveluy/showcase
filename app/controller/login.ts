@@ -16,14 +16,14 @@ export default class Login extends Base {
         const model = await this.ctx.model
         const transaction = await this.ctx.model.transaction()
 
-        const openid = await model.User.findOne({
+        const user = await model.User.findOne({
             where: {
                 openid: res.openid
             },
             transaction
         })
 
-        if (openid) {
+        if (user) {
             this.logger.info('老客人登录', res.userInfo.nickName)
             await model.User.update(
                 {

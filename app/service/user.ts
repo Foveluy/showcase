@@ -7,11 +7,11 @@ export default class User extends Service {
      */
     public async getCurrentUser(): Promise<userInfo & { openid: string }> {
         const { ctx } = this
-
-        return <userInfo & { openid: string }>await ctx.model.User.findOne({
+        const user = <userInfo & { openid: string }>await ctx.model.User.findOne({
             where: {
                 ticket: ctx.ticket
             }
         })
+        return user
     }
 }

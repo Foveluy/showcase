@@ -15,19 +15,20 @@ export default class Trainer extends Base {
     @bp.post('/state', WechatAuth)
     public async bookingState() {
         const { ctx } = this
-        const { date, trainer } = ctx.request.body
-        const TodayBooked = await this.service.trainer.todayBookState(date, trainer)
+        const { date, trainerId } = ctx.request.body
+        const TodayBooked = await this.service.trainer.todayBookState(date, trainerId)
         this.RspJson(TodayBooked)
     }
 
-    @bp.post('/', WechatAuth)
+    @bp.post('/booking', WechatAuth)
     public async bookTrainer() {
         const { ctx } = this
-        const { start, end, date, trainer } = ctx.request.body
-        const TodayBooked = await this.service.trainer.todayBookState(date, trainer)
+        const { start, end, date, trainerId } = ctx.request.body
+        const TodayBooked = await this.service.trainer.todayBookState(date, trainerId)
         let booked = false
         for (let i in TodayBooked) {
             const item: any = TodayBooked[i]
+            console.log(item.start, item.end)
             if (item.start > end || item.end < start) {
                 booked = false
             } else {
@@ -39,11 +40,20 @@ export default class Trainer extends Base {
 
         if (booked) {
             this.ResponseFail('教练已经被预定，请选择其他时段')
+            this.logger.warn('教练被预定')
         } else {
             const user = await this.service.user.getCurrentUser()
 
-            await ctx.model.PersonCourse.create({ openid: user.openid, start, end, date, trainer })
-            this.RspJson('预定成功')
+            await ctx.model.PersonCourse.create({
+                openid: user.openid,
+                start: start,
+                end: end,
+                date: date,
+                trainerId: trainerId
+            })
+
+            const TodayBooked = await this.service.trainer.todayBookState(date, trainerId)
+            this.RspJson(TodayBooked)
         }
     }
 }
