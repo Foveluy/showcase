@@ -39,6 +39,10 @@ export default (appInfo: EggAppConfig) => {
     domainWhiteList: ['http://localhost:3000']
   }
 
+  config.logger = {
+    level: 'DEBUG'
+  }
+
   config.cors = {
     origin: '*'
   }
