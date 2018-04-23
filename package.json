@@ -60,9 +60,7 @@
     "type": "git",
     "url": ""
   },
-  "eslintIgnore": [
-    "coverage"
-  ],
+  "eslintIgnore": ["coverage"],
   "author": "zhengfang",
   "license": "MIT"
 }
