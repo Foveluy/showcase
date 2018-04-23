@@ -15,7 +15,7 @@ module.exports = (app: Application) => {
     trainerId: INTEGER,
     time: STRING(32),
     date: STRING(16),
-    courseModel: STRING(64),
+    courseModel: INTEGER,
     credit: INTEGER,
     state: {
       type: STRING(8),
@@ -27,18 +27,20 @@ module.exports = (app: Application) => {
     model.create({
       course: '力量训练123xyz',
       member: 0,
-      maxMember: 3,
+      maxMember: 1,
       trainerId: 1,
       time: '15:00~18:00',
-      date: '4.16'
+      date: '4.23',
+      courseModel: 1
     })
     model.create({
       course: '力量训练123xyz',
       member: 0,
-      maxMember: 3,
+      maxMember: 1,
       trainerId: 2,
       time: '15:00~18:00',
-      date: '4.16'
+      date: '4.23',
+      courseModel: 1
     })
   })
 

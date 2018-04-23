@@ -2,28 +2,28 @@ import { Application } from 'egg'
 import { DefineAttributes } from 'sequelize'
 
 export const ModelDefine = (app: Application, name: string, attributes: DefineAttributes) => {
-    const { INTEGER } = app.Sequelize
-    const Model = app.model.define(
-        name,
-        {
-            id: {
-                type: INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-                unique: true
-            },
-            ...attributes
-        },
-        {
-            timestamps: false,
-            freezeTableName: true
-        }
-    )
-    // Model.sync({ force: true })
+  const { INTEGER } = app.Sequelize
+  const Model = app.model.define(
+    name,
+    {
+      id: {
+        type: INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        unique: true
+      },
+      ...attributes
+    },
+    {
+      timestamps: false,
+      freezeTableName: true
+    }
+  )
+  Model.sync({ force: true })
 
-    return Model
+  return Model
 }
 
 export interface BaseModel {
-    id?: number
+  id?: number
 }
