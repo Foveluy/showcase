@@ -19,7 +19,7 @@ export const ModelDefine = (app: Application, name: string, attributes: DefineAt
       freezeTableName: true
     }
   )
-  Model.sync({ force: true })
+//   Model.sync({ force: true })
 
   return Model
 }
