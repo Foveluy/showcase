@@ -3,6 +3,6 @@ import { Blueprint } from 'egg-blueprint'
 
 export default (app: Application) => {
   // const { controller, router } = app
-  Blueprint(app, { prefix: '/node_api/api' })
+  Blueprint(app)
   // router.get('/', controller.home.index)
 }

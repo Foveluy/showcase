@@ -9,10 +9,10 @@ export default {
         enable: true,
         package: 'egg-cors'
     },
-    sequelize: {
-        enable: true,
-        package: 'egg-sequelize'
-    },
+    // sequelize: {
+    //     enable: true,
+    //     package: 'egg-sequelize'
+    // },
     jwt: {
         enable: true,
         package: 'egg-jwt'
