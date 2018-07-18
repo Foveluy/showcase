@@ -70,6 +70,39 @@ function raw(args) {
   return string;
 }
 
+function paysignjs(appid, nonceStr, pkg, signType, timeStamp) {
+  var ret = {
+    appId: appid,
+    nonceStr: nonceStr,
+    package: pkg,
+    signType: signType,
+    timeStamp: timeStamp
+  };
+  var string = raw1(ret);
+  string = string + '&key=' + key;
+  console.log(string);
+  var crypto = require('crypto');
+  return crypto
+    .createHash('md5')
+    .update(string, 'utf8')
+    .digest('hex');
+}
+function raw1(args) {
+  var keys = Object.keys(args);
+  keys = keys.sort();
+  var newArgs = {};
+  keys.forEach(function(key) {
+    newArgs[key] = args[key];
+  });
+
+  var string = '';
+  for (var k in newArgs) {
+    string += '&' + k + '=' + newArgs[k];
+  }
+  string = string.substr(1);
+  return string;
+}
+
 export default class User extends Base {
   @bp.get('/payment')
   public async PaymentMethod() {
@@ -124,6 +157,27 @@ export default class User extends Base {
     );
     const j = res.data;
     const json = parser.toJson(j + '');
-    this.RspJson(json);
+
+    const xml = JSON.parse(json).xml;
+    const time = Date.now() + '';
+    const after = paysignjs(
+      xml.appid,
+      xml.nonce_str,
+      'prepay_id=' + xml.prepay_id,
+      'MD5',
+      time
+    );
+
+    var args = {
+      appid: xml.appid,
+      timeStamp: time,
+      nonceStr: xml.nonce_str,
+      signType: 'MD5',
+      package: 'prepay_id=' + xml.prepay_id,
+      paySign: after,
+      status: 200
+    };
+
+    this.RspJson(args);
   }
 }
