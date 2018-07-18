@@ -111,12 +111,12 @@ export default class User extends Base {
     const body = '力量纵横线上支付';
     const attach = '支付';
     const mchID = '1500318112';
-    const notice_url = 'https://zh.9uhxir.top/uploads/admin/record.html';
+    const notice_url = 'https://zh.9uhxir.top/django/zongheng/getpayment/';
     const out_trade_no = Date.now();
     const ip = '127.0.0.1';
     const fee = '1';
     const type = 'JSAPI';
-    const openid = 'oM8Ad0XbiddXFdLJwel4KGdpgr_E';
+    const openid = this.ctx.request.queries['openid'];
     const sign = paysignjsapi(
       appid,
       body,
