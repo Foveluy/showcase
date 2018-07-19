@@ -175,7 +175,7 @@ export default class User extends Base {
       signType: 'MD5',
       package: 'prepay_id=' + xml.prepay_id,
       paySign: after,
-      status: 200
+      orderNumber: out_trade_no
     };
 
     this.RspJson(args);
