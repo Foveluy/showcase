@@ -114,9 +114,9 @@ export default class User extends Base {
     const notice_url = 'https://zh.9uhxir.top/django/zongheng/getpayment/';
     const out_trade_no = Date.now();
     const ip = '127.0.0.1';
-    const fee = '1';
     const type = 'JSAPI';
     const openid = this.ctx.request.queries['openid'];
+    const fee = this.ctx.request.queries['money'];
     const sign = paysignjsapi(
       appid,
       body,
