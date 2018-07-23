@@ -109,7 +109,7 @@ export default class User extends Base {
     const nonce_str = createNonceStr() + createTimeStamp(); //随机字符串
     const appid = 'wx04a308ed79815bb9';
     const body = '力量纵横线上支付';
-    const attach = '支付';
+    const attach = this.ctx.request.queries['type'];
     const mchID = '1500318112';
     const notice_url = 'https://zh.9uhxir.top/django/zongheng/getpayment/';
     const out_trade_no = Date.now();
